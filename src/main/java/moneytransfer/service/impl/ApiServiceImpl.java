@@ -29,13 +29,7 @@ public class ApiServiceImpl implements ApiService{
 	
 	@Override
 	public void transferMoney (final Context context, final Optional<Account> senderAccount, final Optional<Account> receiverAccount, String transferAmount) {
-			if(StringUtils.isBlank(senderAccount.get().getAccountNumber()) || StringUtils.isBlank(receiverAccount.get().getAccountNumber())) {
-    		throw new ApiException("Please provide valid account number");	
-    	}
-    	if(senderAccount.get().getAccountNumber().equals(receiverAccount.get().getAccountNumber())) {
-    		throw new ApiException("Sender and Receiver Account shouldn't be the same");	
-	    }
-   
+			  
 		if(StringUtils.isNotBlank(transferAmount)) {
 			if(!org.apache.commons.lang3.math.NumberUtils.isParsable(transferAmount)) {
 				throw new ApiException("Amount should be numeric");

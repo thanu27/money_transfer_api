@@ -39,20 +39,16 @@ public class ApiController{
 	    	if(senderAccountNumber.equals(receiverAccountNumber)) {
 	    		throw new ApiException("Sender and Receiver Account shouldn't be the same");	
 		    }
-	    	if(StringUtils.isBlank(transferAmount)) {
-	    		
-	    		throw new ApiException("Please provide valid amount");	
-	    	}
    
 			Optional<Account> senderAccount = service.getSenderAccountMap().get(senderAccountNumber);
 		    Optional<Account> receiverAccount = service.getReceiverAccountMap().get(receiverAccountNumber);
 		    
-		    if(!senderAccount.isPresent()) {
+		    if(null==senderAccount || !senderAccount.isPresent()) {
 		    	
 	    	throw new AccountNotExistsException(senderAccountNumber);
 		    }
 		    
-		    if(!receiverAccount.isPresent()) {
+		    if(null==receiverAccount || !receiverAccount.isPresent()) {
 	    	
 		    	throw new AccountNotExistsException(receiverAccountNumber);
 		    }	    
