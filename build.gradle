@@ -1,0 +1,52 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+}
+
+plugins {
+  id 'java'
+  id 'application'
+}
+
+//group 'moneytransfer'
+//version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+mainClassName = 'moneytransfer.Application'
+
+sourceSets {
+  main {
+    java {
+      srcDirs 'src/main/java'
+    }
+  }
+
+  test {
+    java {
+      srcDir 'src/test/java'
+    }
+  }
+}
+
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'io.javalin:javalin:2.1.1'
+  implementation 'org.slf4j:slf4j-simple:1.7.25'
+  implementation 'org.joda:joda-money:1.0.1'
+  implementation 'com.google.code.gson:gson:2.8.5'
+  implementation 'com.google.dagger:dagger:2.17'
+  compile 'com.google.dagger:dagger-compiler:2.17'
+  annotationProcessor 'com.google.dagger:dagger-compiler:2.17'
+  implementation 'org.apache.commons:commons-lang3:3.7'
+  annotationProcessor ('com.google.auto.value:auto-value:1.5')
+  compile 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
+
+  testImplementation 'junit:junit:4.12'
+  testImplementation 'io.rest-assured:rest-assured:3.1.1'  
+}
